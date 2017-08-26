@@ -2,6 +2,8 @@
 namespace FiremonPHP\Database;
 
 
+use FiremonPHP\Database\Connection\ConnectionManager;
+
 class Database
 {
     /**
@@ -9,9 +11,15 @@ class Database
      */
     private $_connection;
 
-    public function __construct(\FiremonPHP\Database\Connection\ConnectionInterface $connection)
+    public function __construct(\FiremonPHP\Database\Connection\ConnectionInterface $connection = null)
     {
-        $this->_connection = $connection;
+        if ($connection === null) {
+            $this->_connection = ConnectionManager::get('default');
+        } elseif($connection instanceof \FiremonPHP\Database\Connection\ConnectionInterface) {
+            $this->_connection = $connection;
+        } else {
+            throw new \ErrorException('Don\'t have Connection instacied yet!');
+        }
     }
 
     /**

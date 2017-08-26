@@ -33,7 +33,11 @@ class ConnectionManager
      */
     public static function get(string $name)
     {
-        return self::$connections[$name];
+        if (isset(self::$connections[$name])) {
+            return self::$connections[$name];
+        } else {
+            throw new \Exception('The instance: "'.$name.'" that you want is not available, try to set up before!');
+        }
     }
 
     /**
