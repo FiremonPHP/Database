@@ -19,10 +19,7 @@ class WriteQuery implements QueryInterface
      * Default options to bulkWriter
      * @var array
      */
-    private $_options = [
-        'multi' => false,
-        'upsert' => false
-    ];
+    private $_options = [];
 
     private $_data = [];
 
@@ -45,15 +42,15 @@ class WriteQuery implements QueryInterface
      * @param bool $many
      * @return $this
      */
-    public function many(bool $many = true)
+    public function many(string $collectionName,bool $many = true)
     {
-        $this->_options['multi'] = $many;
+        $this->_options[$collectionName]['multi'] = $many;
         return $this;
     }
 
-    public function replace(bool $replace = true)
+    public function replace(string $collectionName, bool $replace = true)
     {
-        $this->_options['upsert'] = $replace;
+        $this->_options[$collectionName]['upsert'] = $replace;
         return $this;
     }
 

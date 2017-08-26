@@ -174,7 +174,7 @@ class WriteOperation
             $this->_bulk[$namespace] = new \MongoDB\Driver\BulkWrite();
         }
         $conditions = isset($this->_indexes[$namespace]) ? [$this->_indexes[$namespace] => $key] : ['_id' => new \MongoDB\BSON\ObjectID($key)];
-        $this->_bulk[$namespace]->update($conditions, ['$set' => $data], $this->_options);
+        $this->_bulk[$namespace]->update($conditions, ['$set' => $data], $this->_options[$namespace] ?? []);
     }
 
     /**
