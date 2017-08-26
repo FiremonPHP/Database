@@ -1,0 +1,25 @@
+{
+  "name": "FiremonPHP/database",
+  "description": "This lib provides easy way to write and read mongodb",
+  "minimum-stability": "dev",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Marcos Dantas",
+      "email": "marcos.adantas@hotmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "FiremonPHP\\Database\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+     "FiremonPHP\\Database\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "6.3"
+  }
+}
