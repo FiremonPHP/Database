@@ -6,17 +6,37 @@ porém deve ser de interesse posterior, o Firemon nasce para trazer a mesma faci
 
 
 ### Instanciando uma conexão
-```php
+```
+<?php
 \FiremonPHP\Database\Connection\ConnectionManager::config('default', [
    'url' => 'mongodb://user:pass@localhost:27017',
     'database' => 'testdb'
 ]);
 ```
 
+### Database
+
+```
+<?php
+$database = new \FiremonPHP\Database\Database();
+```
+##### Database functions
+
+```
+get(string $urlNamespace)
+```
+Realiza uma consulta no banco de dados pelo filtro dados
+
+```
+set(array $data)
+```
+
+Constrói a partir do bloco de dados seus respectivos documentos, conforme exemplos a baixo:
+
 ### Adicionando dados
 
-```php
-$database = new \FiremonPHP\Database\Database();
+```
+<php
 
 $newData = $database->set([
     'users' => ['nome' => 'Marcos Dantas', 'cidade' => 'Parelhas'], // isso já é capaz de adicionar dados a partir de um namespace
@@ -36,4 +56,23 @@ $newData
 
 $newData
     ->execute(); // Executa o conjunto de instruções!
+```
+
+### Lendo dados do mongodb
+
+```
+<?php
+
+$users = $database->get('users')
+    ->execute();
+
+$posts = $database->get('posts')
+    ->fields(['title','description'])
+    ->descBy('created')
+    ->limit(10)
+    ->endAt('created', 'Implement data type fault!')
+    ->startAt('created', 'Implement data type fault!')
+    ->skip(5);
+// ->notEqual()
+// ->equalTo()
 ```
