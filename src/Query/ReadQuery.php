@@ -84,7 +84,7 @@ class ReadQuery implements QueryInterface
     public function execute()
     {
         return $this->_connection->executeQuery('read',[
-            'collection' => $this->_data,
+            'collection' => $this->_alias,
             'conditions' => $this->_conditions,
             'options' => $this->_options
         ]);
