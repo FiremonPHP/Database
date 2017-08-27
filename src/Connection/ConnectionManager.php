@@ -22,9 +22,7 @@ class ConnectionManager
      */
     public static function config(string $name, array $configsKey)
     {
-        self::$connections[$name] = new \FiremonPHP\Database\Database(
-            self::getConnection($configsKey)
-        );
+        self::$connections[$name] = self::getConnection($configsKey);
     }
 
     /**
