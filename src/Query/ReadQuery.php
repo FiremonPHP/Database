@@ -81,6 +81,10 @@ class ReadQuery implements QueryInterface
         return $this;
     }
 
+    /**
+     * Execute querie
+     * @return \MongoDB\Driver\Cursor
+     */
     public function execute()
     {
         return $this->_connection->executeQuery('read',[

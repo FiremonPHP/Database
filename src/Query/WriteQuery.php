@@ -65,6 +65,10 @@ class WriteQuery implements QueryInterface
         return $this;
     }
 
+    /**
+     * Execute queries by array data structure
+     * @return \MongoDB\Driver\WriteResult
+     */
     public function execute()
     {
         return $this->_connection->executeQuery('write', [
