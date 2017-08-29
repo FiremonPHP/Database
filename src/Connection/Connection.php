@@ -29,7 +29,7 @@ final class Connection implements ConnectionInterface
      */
     public function executeQuery(string $type, array $queryData)
     {
-        return $this->{'_'.$type}($queryData);
+        return $this->{$type}($queryData);
     }
 
     /**
@@ -52,7 +52,7 @@ final class Connection implements ConnectionInterface
      * @param string $collectionName
      * @param array $queryData
      */
-    private function _write(array $queryData)
+    private function write(array $queryData)
     {
         $writeOperation = new \FiremonPHP\Database\Operations\WriteOperation(
             $queryData['data'],
@@ -73,7 +73,7 @@ final class Connection implements ConnectionInterface
      * @param array $queryData
      * @return \MongoDB\Driver\Cursor
      */
-    private function _read(array $queryData)
+    private function read(array $queryData)
     {
         $namespace = $this->_alias.'.'.$queryData['collection'];
         $query = new \MongoDB\Driver\Query($queryData['conditions'], $queryData['options']);

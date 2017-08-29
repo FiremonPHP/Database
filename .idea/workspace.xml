@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f767a8d-8402-4a45-970f-860312ebf046" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Operations/BulkWrite.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Operations/DataWrite.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Operations/DataArray.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Connection/Connection.php" afterPath="$PROJECT_DIR$/src/Connection/Connection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Connection/ConnectionInterface.php" afterPath="$PROJECT_DIR$/src/Connection/ConnectionInterface.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Operations/WriteOperation.php" afterPath="$PROJECT_DIR$/src/Operations/WriteOperation.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,11 +18,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="WriteTest.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WriteTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WriteTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+            <state relative-caret-position="153">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -44,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Connection.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Connection.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Connection/Connection.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="67" column="9" lean-forward="false" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+            <state relative-caret-position="187">
+              <caret line="31" column="42" lean-forward="true" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -74,10 +68,10 @@
         <option value="$PROJECT_DIR$/src/Operations/DataArray.php" />
         <option value="$PROJECT_DIR$/src/Operations/DataWrite.php" />
         <option value="$PROJECT_DIR$/src/Connection/ConnectionInterface.php" />
-        <option value="$PROJECT_DIR$/src/Connection/Connection.php" />
         <option value="$PROJECT_DIR$/src/Operations/WriteOperation.php" />
         <option value="$PROJECT_DIR$/src/Operations/BulkWrite.php" />
         <option value="$PROJECT_DIR$/WriteTest.php" />
+        <option value="$PROJECT_DIR$/src/Connection/Connection.php" />
       </list>
     </option>
   </component>
@@ -352,7 +346,7 @@
       <workItem from="1503875737836" duration="808000" />
       <workItem from="1503876563003" duration="208000" />
       <workItem from="1503877105208" duration="15302000" />
-      <workItem from="1503937190260" duration="16809000" />
+      <workItem from="1503937190260" duration="17346000" />
     </task>
     <servers />
   </component>
@@ -383,7 +377,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72638000" />
+    <option name="totallyTimeSpent" value="73175000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -733,14 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Connection/Connection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="67" column="9" lean-forward="false" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Operations/BulkWrite.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
@@ -751,8 +737,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WriteTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        <state relative-caret-position="153">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Connection/Connection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="31" column="42" lean-forward="true" selection-start-line="31" selection-start-column="42" selection-end-line="31" selection-end-column="42" />
           <folding />
         </state>
       </provider>
