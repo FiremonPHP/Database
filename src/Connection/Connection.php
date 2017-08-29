@@ -33,6 +33,22 @@ final class Connection implements ConnectionInterface
     }
 
     /**
+     * @return \MongoDB\Driver\Manager
+     */
+    public function getManager()
+    {
+        return $this->_manager;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDatabaseName()
+    {
+        return $this->_alias;
+    }
+
+    /**
      * @param string $collectionName
      * @param array $queryData
      */
@@ -41,18 +57,15 @@ final class Connection implements ConnectionInterface
         $writeOperation = new \FiremonPHP\Database\Operations\WriteOperation(
             $queryData['data'],
             $queryData['indexes'],
-            $queryData['options']
+            $queryData['options'],
+            $this->_alias
         );
 
-        $writeOperation->run();
 
-        foreach ($writeOperation->getBulkWrite() as $key => $bulk)
+        foreach ($writeOperation->getBulks() as $bulk)
         {
-            $namespace = $this->_alias.'.'.$key;
-            $this->_manager->executeBulkWrite($namespace, $bulk);
+            $this->_manager->executeBulkWrite($bulk->getFullNamespace(), $bulk->getBulk());
         }
-
-
     }
 
     /**

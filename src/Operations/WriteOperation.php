@@ -4,157 +4,117 @@ namespace FiremonPHP\Database\Operations;
 
 class WriteOperation
 {
-    private $_data = [];
-
     /**
-     * @var \MongoDB\Driver\BulkWrite[]
+     * @var BulkWrite[]
      */
-    private $_bulk = [];
-
-    private $_options = [];
-
-    private $_concerns = [];
-
-    private $_validations = [];
-
-    private $_errors = [];
-
-    private $_indexes = [];
+    private $bulks = [];
 
     /**
-     * WriteOperation constructor.
+     * @var array
+     */
+    private $writeData = [];
+
+    public function __construct(array $data, array $options, array $indexes, string $aliasDatabase)
+    {
+        $this->loop($data);
+        $this->organizeOptionsData($options);
+        $this->organizeIndexesData($options);
+        $this->setBulks($aliasDatabase);
+    }
+
+    /**
+     * @return BulkWrite[]
+     */
+    public function getBulks(): array
+    {
+        return $this->bulks;
+    }
+
+    /**
+     * Iterate all key of object and set new BulkWrites
      * @param array $data
-     * @param array $indexes
+     */
+    private function loop(array $data)
+    {
+        $firstKey = key($data);
+
+        if (!is_string($firstKey)) {
+            throw new \InvalidArgumentException('Structure data invalid, all data need init by string key!');
+        }
+
+        $this->organizeDataStructure($data[$firstKey], $firstKey);
+        unset($data[$firstKey]);
+
+        if (count($data) > 0) {
+            $this->loop($data);
+        }
+
+    }
+
+    /**
+     * Organize all data on right namespace by firstKeyIndex on data structure.
+     * @param array $data
+     * @param $firstKeyArray
+     */
+    private function organizeDataStructure($data, $firstKeyArray)
+    {
+        $matches = explode('/',$firstKeyArray);
+        if (isset($matches[1])) {
+            $this->writeData[$matches[0]]['/'.$matches[1]] = $data;
+            return;
+        }
+
+        if ($data === null) {
+            throw new \InvalidArgumentException('Data on key '.$firstKeyArray.' cannot be null!');
+        }
+
+        $subDataKey = key($data);
+        if (is_string($data[$subDataKey])) {
+            $this->writeData[$matches[0]][] = $data;
+            return;
+        }
+
+        if (isset($this->writeData[$matches[0]])) {
+            $this->writeData[$matches[0]] = array_merge($this->writeData[$matches[0]], $data);
+            return;
+        }
+
+        $this->writeData[$matches[0]] = $data;
+    }
+
+    /**
+     * Set all options to right namespace
      * @param array $options
-     *
-     * [
-    'data' => $this->_data,
-    'indexes' => $this->_indexes,
-    'options' => $this->_options
-    ]
      */
-    public function __construct(array $data, array $indexes, array $options = [])
+    private function organizeOptionsData(array $options)
     {
-        $this->_data = $data;
-        $this->_indexes = $indexes;
-        $this->_options = $options;
+        $self = $this;
+        array_walk($options, function($item, $key) use ($self) {
+           $this->writeData[$key]['options'] = $item;
+        });
     }
 
     /**
-     * @return \MongoDB\Driver\BulkWrite[]
+     * Set index of collection for filter conditions
+     * @param array $indexes
      */
-    public function getBulkWrite()
+    private function organizeIndexesData(array $indexes)
     {
-        return $this->_bulk;
-    }
-
-    public function run()
-    {
-        $this->iterateMainData($this->_data);
-
-        if (count($this->_errors) > 0) {
-            return false;
-        }
-        return true;
+        $self = $this;
+        array_walk($indexes, function($item, $key) use ($self) {
+           $self->writeData[$key]['index'] = $item;
+        });
     }
 
     /**
-     * @param array $data
+     * Iterate all datas structure seteds and create BulkWrite object
+     * @param string $aliasDatabase
      */
-    private function iterateMainData(array $data)
+    private function setBulks(string $aliasDatabase)
     {
-        $firstKey = key($data);
-
-        $dataArray = new DataArray($data[$firstKey], $firstKey);
-
-        if ($dataArray->haveSubData()) {
-            $this->iterateSubData($dataArray->getData(), $dataArray->getNamespace());
-        } else {
-            $this->{$dataArray->action()}($dataArray);
-        }
-
-        unset($data[$firstKey]);
-        unset($dataArray);
-
-        if (count($data) > 0) {
-            $this->iterateMainData($data);
-        }
+        $self = $this;
+        array_walk($this->writeData, function($item, $key) use ($self, $aliasDatabase){
+            $self->bulks[$key] = new BulkWrite($item, $key, $aliasDatabase);
+        });
     }
-
-    private function iterateSubData(array $data, $namespace)
-    {
-        $firstKey = key($data);
-        $namespaceSubData = $namespace;
-        if (is_string($firstKey) || is_null($firstKey)) {
-            $namespaceSubData .= $firstKey;
-        }
-        $subDataArray = new DataArray($data[$firstKey], $namespaceSubData);
-        $this->{$subDataArray->action()}($subDataArray);
-
-        unset($data[$firstKey]);
-        unset($subDataArray);
-
-        if (count($data) > 0) {
-            $this->iterateSubData($data, $namespace);
-        }
-    }
-
-
-    /**
-     * Set insert action on namespace bulk
-     * @param array $data
-     * @param $namespace
-     */
-    private function insert(DataArray $object)
-    {
-        $this->createBulkIfNotExist($object->getNamespace());
-
-        //Todo: implement validations methods!
-        $this->_bulk[$object->getNamespace()]->insert($object->getData());
-    }
-
-    private function createBulkIfNotExist(string $namespace)
-    {
-        if (!isset($this->_bulk[$namespace])) {
-            $this->_bulk[$namespace] = new \MongoDB\Driver\BulkWrite();
-        }
-    }
-
-    private function getIndexCondition(string $namespace, $objectId)
-    {
-        if (isset($this->_indexes[$namespace])) {
-            return [$this->_indexes[$namespace] => $objectId];
-        }
-        return ['_id' => new \MongoDB\BSON\ObjectID($objectId)];
-    }
-
-    /**
-     * Set update action on namespace bulk
-     * @param $key
-     * @param $namespace
-     * @param $data
-     */
-    private function update(DataArray $object)
-    {
-        //Todo: implement validations methods!
-        $this->createBulkIfNotExist($object->getNamespace());
-
-        $conditions = $this->getIndexCondition($object->getNamespace(), $object->getId());
-        $this->_bulk[$object->getNamespace()]->update($conditions, ['$set' => $object->getData()], $this->_options[$object->getNamespace()] ?? []);
-    }
-
-    /**
-     * Set delete action on namespace bulk
-     * If not have index to namespace, set default mongodb index '_id'
-     * @param $key
-     * @param $namespace
-     */
-    private function delete(DataArray $object)
-    {
-        $this->createBulkIfNotExist($object->getNamespace());
-
-        $conditions = $this->getIndexCondition($object->getNamespace(), $object->getId());
-        $this->_bulk[$object->getNamespace()]->delete($conditions, ['limit' => 1]);
-    }
-
 }

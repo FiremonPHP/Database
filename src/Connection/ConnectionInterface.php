@@ -12,4 +12,6 @@ namespace FiremonPHP\Database\Connection;
 interface ConnectionInterface
 {
     public function executeQuery(string $type, array $queryData);
+    public function getManager();
+    public function getDatabaseName();
 }
