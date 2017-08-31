@@ -4,7 +4,7 @@ namespace FiremonPHP\Database\Exceptions;
 
 use SebastianBergmann\CodeCoverage\Report\PHP;
 
-class DuplicateKeyException extends \Exception implements \MongoDB\Exception\Exception
+class DuplicateKeyException
 {
     /**
      * @var mixed
