@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f767a8d-8402-4a45-970f-860312ebf046" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Exceptions/DuplicateKeyException.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Exceptions/MongoDBExceptions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Exceptions/DuplicateKeyException.php" afterPath="$PROJECT_DIR$/src/Exceptions/DuplicateKeyException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Exceptions/MongoDBExceptions.php" afterPath="$PROJECT_DIR$/src/Exceptions/MongoDBExceptions.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -40,21 +39,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MongoDBExceptions.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MongoDBExceptions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Exceptions/MongoDBExceptions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="61" lean-forward="true" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+            <state relative-caret-position="340">
+              <caret line="25" column="92" lean-forward="true" selection-start-line="25" selection-start-column="92" selection-end-line="25" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DuplicateKeyException.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DuplicateKeyException.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Exceptions/DuplicateKeyException.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+            <state relative-caret-position="63">
+              <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WriteTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WriteTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -80,13 +89,13 @@
         <option value="$PROJECT_DIR$/src/Connection/ConnectionInterface.php" />
         <option value="$PROJECT_DIR$/src/Operations/WriteOperation.php" />
         <option value="$PROJECT_DIR$/src/Operations/BulkWrite.php" />
-        <option value="$PROJECT_DIR$/WriteTest.php" />
         <option value="$PROJECT_DIR$/src/Connection/Connection.php" />
         <option value="$PROJECT_DIR$/src/Query/WriteQuery.php" />
         <option value="$PROJECT_DIR$/src/Query/ReadQuery.php" />
-        <option value="$PROJECT_DIR$/src/Exceptions/DuplicateKeyException.php" />
         <option value="$PROJECT_DIR$/src/Exceptions/MongoExceptions.php" />
         <option value="$PROJECT_DIR$/src/Exceptions/MongoDBExceptions.php" />
+        <option value="$PROJECT_DIR$/WriteTest.php" />
+        <option value="$PROJECT_DIR$/src/Exceptions/DuplicateKeyException.php" />
       </list>
     </option>
   </component>
@@ -328,7 +337,7 @@
       <workItem from="1503937190260" duration="17472000" />
       <workItem from="1504009446869" duration="123000" />
       <workItem from="1504117334194" duration="1305000" />
-      <workItem from="1504118904557" duration="913000" />
+      <workItem from="1504118904557" duration="6187000" />
     </task>
     <servers />
   </component>
@@ -359,7 +368,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75642000" />
+    <option name="totallyTimeSpent" value="80916000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -432,6 +441,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1173">
           <caret line="69" column="57" lean-forward="true" selection-start-line="69" selection-start-column="57" selection-end-line="73" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -661,14 +671,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WriteTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Query/ReadQuery.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="369">
@@ -680,6 +682,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="68" column="46" lean-forward="false" selection-start-line="68" selection-start-column="46" selection-end-line="68" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -723,14 +726,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Exceptions/DuplicateKeyException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Exceptions/MongoExceptions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -739,10 +734,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/WriteTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Exceptions/MongoDBExceptions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="61" lean-forward="true" selection-start-line="14" selection-start-column="61" selection-end-line="14" selection-end-column="61" />
+        <state relative-caret-position="340">
+          <caret line="25" column="92" lean-forward="true" selection-start-line="25" selection-start-column="92" selection-end-line="25" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Exceptions/DuplicateKeyException.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="4" column="29" lean-forward="false" selection-start-line="4" selection-start-column="29" selection-end-line="4" selection-end-column="29" />
           <folding />
         </state>
       </provider>

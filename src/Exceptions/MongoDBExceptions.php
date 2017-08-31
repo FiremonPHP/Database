@@ -23,7 +23,7 @@ class MongoDBExceptions
     {
         $errors = [];
         array_map(function(\MongoDB\Driver\WriteError $error) use($errors){
-            $errors[] = self::$exception_class[$error->getCode()];
+            $errors[] = new self::$exception_class[$error->getCode()]($error->getMessage());
         }, $writeResult->getWriteErrors());
         return $errors;
     }
