@@ -33,7 +33,7 @@ class DuplicateKeyException extends \Exception implements \MongoDB\Exception\Exc
     private function setIndex(string  $message)
     {
         $matches = [];
-        preg_match_all('/index:\ (.*?)\ /', $message, $matches, PREG_SET_ORDER, 0);
+        preg_match('/index:\ (.*?)\ /', $message, $matches);
         $this->index = $matches[1];
     }
 }
