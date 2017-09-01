@@ -2,12 +2,14 @@
 namespace FiremonPHP\Database\Query;
 
 
-class ReadQuery implements QueryInterface
+use FiremonPHP\Connection\ManagerInterface;
+
+class ReadQuery
 {
     /**
-     * @var \FiremonPHP\Database\Connection\ConnectionInterface
+     * @var \FiremonPHP\Connection\ManagerInterface
      */
-    private $_connection;
+    private $_manger;
 
     private $_options = [];
 
@@ -15,10 +17,10 @@ class ReadQuery implements QueryInterface
 
     private $_conditions = [];
 
-    public function __construct(\FiremonPHP\Database\Connection\ConnectionInterface $connection, string $alias)
+    public function __construct(ManagerInterface $manager, string $alias)
     {
         $this->_alias = $alias;
-        $this->_connection = $connection;
+        $this->_manger = $manager;
     }
 
     /**
@@ -87,11 +89,7 @@ class ReadQuery implements QueryInterface
      */
     public function execute()
     {
-        return $this->_connection->executeQuery('read',[
-            'collection' => $this->_alias,
-            'conditions' => $this->_conditions,
-            'options' => $this->_options
-        ]);
+        return $this->_manger->find($this->_alias, $this->_conditions, $this->_options);
     }
 
 }

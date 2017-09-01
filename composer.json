@@ -14,15 +14,13 @@
       "FiremonPHP\\Database\\": "src/"
     }
   },
-  "autoload-dev": {
-    "psr-4": {
-     "FiremonPHP\\Database\\Tests\\": "tests/"
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/FiremonPHP/Connection.git"
     }
-  },
-  "require-dev": {
-    "phpunit/phpunit": "6.3"
-  },
+  ],
   "require": {
-    "mongodb/mongodb": "^1.2@dev"
+    "FiremonPHP/connection": "dev-master"
   }
 }

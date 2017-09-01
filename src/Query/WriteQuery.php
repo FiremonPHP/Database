@@ -2,12 +2,14 @@
 namespace FiremonPHP\Database\Query;
 
 
-class WriteQuery implements QueryInterface
+use FiremonPHP\Database\Operations\WriteOperations;
+
+class WriteQuery
 {
     /**
-     * @var \FiremonPHP\Database\Connection\ConnectionInterface
+     * @var \FiremonPHP\Connection\ManagerInterface
      */
-    private $_connection;
+    private $_manager;
 
     /**
      * Index of namespaces
@@ -21,19 +23,14 @@ class WriteQuery implements QueryInterface
      */
     private $_options = [];
 
-    private $_data = [];
-
     /**
-     * Default writeConcern
      * @var array
      */
-    private $_writeConcern = [
+    private $_data = [];
 
-    ];
-
-    public function __construct(\FiremonPHP\Database\Connection\ConnectionInterface $connection, array $data)
+    public function __construct(\FiremonPHP\Connection\ManagerInterface $manager, array $data)
     {
-        $this->_connection = $connection;
+        $this->_manager = $manager;
         $this->_data = $data;
     }
 
@@ -42,17 +39,12 @@ class WriteQuery implements QueryInterface
      * @param bool $many
      * @return $this
      */
-    public function many(string $collectionName,bool $many = true)
+    public function setMany(string $collectionName,bool $many = true)
     {
-        $this->_options[$collectionName]['multi'] = $many;
+        $this->_options[$collectionName]['many'] = $many;
         return $this;
     }
 
-    public function replace(string $collectionName, bool $replace = true)
-    {
-        $this->_options[$collectionName]['upsert'] = $replace;
-        return $this;
-    }
 
     /**
      * @param string $collectionName
@@ -67,15 +59,19 @@ class WriteQuery implements QueryInterface
 
     /**
      * Execute queries by array data structure
-     * @return \MongoDB\Driver\WriteResult
      */
     public function execute()
     {
-        return $this->_connection->executeQuery('write', [
-            'data' => $this->_data,
-            'indexes' => $this->_indexes,
-            'options' => $this->_options
-        ]);
+        $writeOperation = new WriteOperations(
+            $this->_data,
+            [
+                'indexes' => $this->_indexes,
+                'options' => $this->_options
+            ],
+            $this->_manager
+        );
+
+        return $writeOperation->execute();
     }
 
 }
