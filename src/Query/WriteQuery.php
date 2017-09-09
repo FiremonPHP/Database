@@ -7,7 +7,7 @@ use FiremonPHP\Database\Operations\WriteOperations;
 class WriteQuery
 {
     /**
-     * @var \FiremonPHP\Connection\ManagerInterface
+     * @var \FiremonPHP\Manager\Manager
      */
     private $_manager;
 
@@ -28,7 +28,7 @@ class WriteQuery
      */
     private $_data = [];
 
-    public function __construct(\FiremonPHP\Connection\ManagerInterface $manager, array $data)
+    public function __construct(\FiremonPHP\Manager\Manager $manager, array $data)
     {
         $this->_manager = $manager;
         $this->_data = $data;

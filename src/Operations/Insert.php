@@ -2,11 +2,11 @@
 namespace FiremonPHP\Database\Operations;
 
 
-use FiremonPHP\Connection\ManagerInterface;
+use FiremonPHP\Manager\Manager;
 
 class Insert
 {
-    public static function insert(ManagerInterface $manager, string $collectionName, $dataInsert)
+    public static function insert(Manager $manager, string $collectionName, $dataInsert)
     {
         $manager->insert($collectionName, $dataInsert);
     }

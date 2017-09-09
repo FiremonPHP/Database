@@ -2,12 +2,12 @@
 namespace FiremonPHP\Database\Operations;
 
 
-use FiremonPHP\Connection\ManagerInterface;
+use FiremonPHP\Manager\Manager;
 
 class WriteOperations
 {
     /**
-     * @var ManagerInterface
+     * @var Manager
      */
     private $_manager;
 
@@ -16,7 +16,7 @@ class WriteOperations
      */
     private $_options;
 
-    public function __construct(array $writeData, array $options = [], ManagerInterface $manager = null)
+    public function __construct(array $writeData, array $options = [], Manager $manager = null)
     {
         $this->_options = $options;
         $this->_manager = $manager;

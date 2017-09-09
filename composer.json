@@ -17,10 +17,10 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/FiremonPHP/Connection.git"
+      "url": "https://github.com/FiremonPHP/Manager"
     }
   ],
   "require": {
-    "FiremonPHP/connection": "dev-master"
+    "FiremonPHP/manager": "dev-master"
   }
 }

@@ -2,12 +2,13 @@
 namespace FiremonPHP\Database;
 
 
-use FiremonPHP\Connection\Configuration;
+use FiremonPHP\Manager\Configuration;
+use FiremonPHP\Manager\Queries\FindQuery;
 
 class Database
 {
     /**
-     * @var \FiremonPHP\Connection\ManagerInterface
+     * @var \FiremonPHP\Manager\Manager
      */
     private $_manager;
 
@@ -26,11 +27,11 @@ class Database
     }
 
     /**
-     * @param $urlNamespace
-     * @return Query\ReadQuery
+     * @param string $urlNamespace
+     * @return FindQuery
      */
     public function get(string $urlNamespace)
     {
-        return (new Query\ReadQuery($this->_manager, $urlNamespace));
+        return new FindQuery($urlNamespace, $this->_manager);
     }
 }

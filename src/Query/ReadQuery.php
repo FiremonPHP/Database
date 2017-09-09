@@ -2,12 +2,12 @@
 namespace FiremonPHP\Database\Query;
 
 
-use FiremonPHP\Connection\ManagerInterface;
+use FiremonPHP\Manager\Manager;
 
 class ReadQuery
 {
     /**
-     * @var \FiremonPHP\Connection\ManagerInterface
+     * @var \FiremonPHP\Manager\Manager
      */
     private $_manger;
 
@@ -17,15 +17,16 @@ class ReadQuery
 
     private $_conditions = [];
 
-    public function __construct(ManagerInterface $manager, string $alias)
+    public function __construct(Manager $manager, string $alias)
     {
         $this->_alias = $alias;
         $this->_manger = $manager;
     }
 
     /**
-     * Set fields of documents
+     * Set fields of document
      * @param array $fieldsName
+     * @return $this
      */
     public function fields(array $fieldsName)
     {
